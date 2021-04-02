@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data table</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<style>
+    [v-cloak] {
+        display: none;
+    }
+
+    .empty-table {
+        text-align: center;
+        margin-top: 20px;
+        color: rgb(92, 92, 92);
+    }
+</style>
+
+<body>
+    <div class="container" id="app" v-cloak>
+        <h1>ItGid.info - данные из таблицы </h1>
+        <div class="section">
+            <table>
+                <tr>
+                    <th>Company</th>
+                    <th>Contact</th>
+                    <th>Country</th>
+                </tr>
+                <tr v-for="field in fields" v-if="fields.length > 0" @click="fieldClick(field.id)">
+                    <td>{{field.company}}</td>
+                    <td>{{field.contact}}</td>
+                    <td>{{field.country}}</td>
+                </tr>
+            </table>
+            <p class="empty-table" v-if="fields.length < 1">Таблица пуста</p>
+        </div>
+
+        <div class="container">
+            <ul>
+                <li><b>Company: </b><span>{{outputInfo.company}}</span></li>
+                <li><b>Contact: </b><span>{{outputInfo.contact}}</span></li>
+                <li><b>Country: </b><span>{{outputInfo.country}}</span></li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
